@@ -1,3 +1,18 @@
-<h1>Index HTML</h1>
+<h1>Listining of article</h1>
 
-<%= link_to 'New Articles', new_article_path%>
+<%= link_to 'Create new Articles', new_article_path%>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+  <% @articles.each do |s| %>
+  <tr>
+    <td><%= s.title %></td>
+    <td><%= s.description%></td>
+    <td><%= link_to "edit", edit_article_path(s)%></td>
+    <td><%= link_to "show", article_path(s)%></td>
+    <td><%= link_to "delete", article_path(s), method: :delete, data: {confirm: "Are you sure?"} %></td>
+  </tr>
+  <% end %>
+</table>
